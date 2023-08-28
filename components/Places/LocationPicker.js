@@ -45,12 +45,18 @@ function LocationPicker() {
         if (!hasPermission) {
             return;
         }
-        const location = await getCurrentPositionAsync();
-        setPickedLocation({
-            lat: location.coords.latitude,
-            lng: location.coords.longitude
-        })
+
+        try {
+            const location = await getCurrentPositionAsync();
+            setPickedLocation({
+                lat: location.coords.latitude,
+                lng: location.coords.longitude
+            });
+        } catch (error) {
+            Alert.alert("Error", "Could not fetch location. Please try again later.");
+        }
     }
+
 
     function pickOnMapHandler() {
         navigation.navigate("Map");
