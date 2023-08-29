@@ -84,7 +84,7 @@ export function fetchPlaceDetails(id) {
                 'SELECT * FROM Places WHERE id = ?',
                 [id],
                 (_, result) => {
-                    resolve(result);
+                    resolve(result.rows._array[0]);
                 },
                 (_, reject) => {
                     reject(error)
