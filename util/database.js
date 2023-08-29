@@ -34,7 +34,6 @@ export function insertPlace(place) {
             transactionObj.executeSql(`INSERT INTO Places(title, imageUri, address, lat, lng) VALUES (?, ?, ?, ?, ?)`,
                 [place.title, place.imageUri, place.address, place.location.lat, place.location.lng],
                 (_, result) => {
-                    console.log(result);
                     resolve(result);
                 },
                 (_, reject) => {
